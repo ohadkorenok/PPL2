@@ -1,0 +1,77 @@
+
+(define empty?
+   (lambda (lst)
+      (if (eq? lst '())
+     #t
+     #f)
+  )
+)
+
+(define list-size
+  (lambda (alist)
+    (if    (empty? alist)
+      0
+      (+ 1 (list-size (cdr alist))))))
+
+(define list?
+    (lambda (lst)
+       (if (empty? lst)
+           #t
+           (if (pair? lst)
+               (list? (cdr lst))
+               #f))))
+
+
+(define equal-list?
+    (lambda (lst1 lst2)
+    (if (not (and (list? lst1) (list? lst2))) #f
+      (if (not (eq? (list-size lst1) (list-size lst2))) #f
+          (if (and (empty? lst1) (empty? lst2)) #t
+            (if ( and (list? (car lst1)) (list? (car lst2))) (equal-list? (car lst1) (car lst2))
+              (if (not (eq? (car lst1)(car lst2))) #f
+                 (and #t (equal-list?(cdr lst1) (cdr lst2))))))
+    )
+    ))
+)
+
+
+(define append
+  (lambda (lst1 lst2)
+     (if (and(empty? lst1) (empty? lst2)) '()
+         (if (not(empty? lst1)) (cons (car lst1) (append (cdr lst1) lst2))
+             (if (empty? lst1) (cons (car lst2) (append lst1 (cdr lst2)))
+                #t )
+             )
+         )
+
+  )
+)
+
+(define append3
+  (lambda (lst1 lst2 num)
+    (append lst1 (append lst2 (list num)))
+       )
+    )
+
+(define pascal
+  (lambda (n)
+     (appendPascal n 1)
+  )
+)
+
+(define pascalNum
+  (lambda (n k)
+     (if (or (= n k) (or (= n 1) (= k 1))) 1
+
+       (if (or (or (< n 1) (< k 1)) (> k n)) 0
+       (+ (pascalNum (- n 1) (- k 1)) (pascalNum (- n 1) k)))
+  )
+)
+)
+
+(define appendPascal
+  (lambda (n k)
+     (if (= k n) (list 1)
+     (append(list (pascalNum n k )) (appendPascal n (+ k 1))))
+       )
+  )
