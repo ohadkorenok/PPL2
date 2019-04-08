@@ -1,9 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 /*
-Purpose: @TODO
-Signature: @TODO
-Type: @TODO
+Purpose: To convert the L2 ast to python code.
+Signature: l2ToPython(exp)
+Type: [exp: Parsed | Error => string | Error]
 */
 exports.l2ToPython = function (exp) {
     return error_1.isError(exp) ? exp.message :

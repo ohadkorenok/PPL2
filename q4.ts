@@ -1,7 +1,7 @@
 /*
-Purpose: @TODO
-Signature: @TODO
-Type: @TODO
+Purpose: To convert the L2 ast to python code.
+Signature: l2ToPython(exp)
+Type: [exp: Parsed | Error => string | Error]
 */
 export const l2ToPython = (exp: Parsed | Error): string | Error =>
     isError(exp) ? exp.message :

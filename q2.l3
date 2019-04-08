@@ -1,4 +1,3 @@
-
 (define empty?
    (lambda (lst)
       (if (eq? lst '())

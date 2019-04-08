@@ -3,8 +3,6 @@ import { parseL3 } from './imp/L3-ast';
 import { unparseL3 } from './imp/L3-unparse';
 import { l3ToL30 } from './q3';
 
-var nitzan = parseL3(`(cons 1 (cons 2 '()))`);
-console.log(nitzan);
 assert.deepEqual(unparseL3(l3ToL30(parseL3(`'()`))),`'()`);
 assert.deepEqual(unparseL3(l3ToL30(parseL3(`(list 1)`))),`(cons 1 '())`);
 assert.deepEqual(unparseL3(l3ToL30(parseL3(`(list 1 2)`))),`(cons 1 (cons 2 '()))`);
